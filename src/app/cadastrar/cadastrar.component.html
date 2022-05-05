@@ -13,32 +13,36 @@
 
             <div class="form-group">
               <label for="nome">Nome</label>
-              <input class="form-control"  type="text" name="nome" id="nome" placeholder="Seu nome">
+               <!--Utilizamos o [(ngModel)]='usuarioLogin.nome' para ficar escutando tudo que é escrito dentro do input-->
+              <input [(ngModel)]="usuario.nome" class="form-control"  type="text" name="nome" id="nome" placeholder="Seu nome" >
             </div>
 
             <div class="form-group">
-              <label for="senha">Senha</label>
-              <input class="form-control"  type="password" name="senha" id="senha" placeholder="Sua senha">
+              <label for="email">usuário</label>
+              <input [(ngModel)]="usuario.usuario" class="form-control"  type="email" name="email" id="email" placeholder="Seu e-mail">
             </div>
 
             <div class="form-group">
               <label for="foto">Link da foto</label>
-              <input class="form-control"  type="password" name="foto" id="foto" placeholder="Link da sua foto">
+              <input [(ngModel)]="usuario.foto" class="form-control"  type="text" name="foto" id="foto" placeholder="Link da sua foto">
             </div>
 
             <div class="form-group">
               <label for="senha">Senha</label>
-              <input class="form-control"  type="password" name="senha" id="senha" placeholder="Sua senha">
+            <!--Antes de por a senha dentro do objeto usuarioLogin, eu vou confirmar primeiro, para isso eu vou criar um método e um evento antes, como abaixo em senha-->
+            <!--O evento é criado dentro de parenteses () e sem a palavra ON e o evento chama um método(método=função) e não mais uma função(JavaScript). Esse método espera um evento e esse evento é passado com sifrão($) e o nome do evento javascript-->
+              <input (input)="confirmSenha($event)" class="form-control"  type="password" name="senha" id="senha" placeholder="Sua senha">
             </div>
 
             <div class="form-group">
               <label for="confirmSenha">Confirmar senha</label>
-              <input class="form-control"  type="password" name="confirmSenha" id="confirmSenha" placeholder="Confirme sua senha">
+              <input [(ngModel)]="usuario.senha" class="form-control"  type="password" name="confirmSenha" id="confirmSenha" placeholder="Confirme sua senha">
             </div>
 
             <div class="form-group">
               <label for="tipo">Tipo de usuário</label>
-              <select class="form-control" name="tipo" id="tipo">
+              <!--Usuaremos o evento (change já que o input é uma tag select que tem opções com valores (value=adm e value=normal))-->
+              <select class="form-control" name="tipo" id="tipo" (change)="tipoUsuario($event)" >
                 <option>Selecione um tipo de usuário</option>
                 <option value="normal">Normal</option>
                 <option value="adm">Administrador</option>
@@ -47,7 +51,8 @@
 
             <div class="d-flex justify-content-center">
               <button type="submit" class="btn btn-danger mr-4" routerLink="/entrar"> Cancelar</button>
-              <button type="submit" class="btn btn-success">Cadastrar</button>
+              <!--Método cadastrar será chamado no html no botão cadastrar através do evento de (click) e realizo o cadastro do usuário-->
+              <button type="submit" class="btn btn-success" (click)="cadastrar()">Cadastrar</button>
             </div>
 
             </div>
