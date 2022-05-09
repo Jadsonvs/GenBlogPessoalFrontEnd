@@ -11,6 +11,7 @@ import { RodapeComponent } from './rodape/rodape.component';
 import { EntrarComponent } from './entrar/entrar.component';
 import { CadastrarComponent } from './cadastrar/cadastrar.component';
 import { InicioComponent } from './inicio/inicio.component';
+import { TemaComponent } from './tema/tema.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { InicioComponent } from './inicio/inicio.component';
     RodapeComponent,
     EntrarComponent,
     CadastrarComponent,
-    InicioComponent
+    InicioComponent,
+    TemaComponent
   ],
 
   imports: [
@@ -30,7 +32,7 @@ import { InicioComponent } from './inicio/inicio.component';
     FormsModule //Importe do modulo. modulo que irá pegar tudo que está no input do html.
   ],
 
-  //Para usar o hfre do ancora e ele funcionar de forma interna na rotas, devemos configurar em app.module.ts e colocar dois provide de localização . Então para gente sempre referenciar as rotas e o Angular não se perder, devemos importar os modules HashLocationStrategy e o LocationStrategy no app.module.ts parao Angular nunca se perder nas rotas, além de colocarmos em Providers em forma de objeto o provider: LocationStrategy e o UseClass: HashLocationStrategy.
+  //Para usar o hfre do ancora na tela atual e ele funcionar de forma interna na rotas, devemos configurar em app.module.ts e colocar dois provide de localização . Então para gente sempre referenciar as rotas e o Angular não se perder, devemos importar os modules HashLocationStrategy e o LocationStrategy no app.module.ts parao Angular nunca se perder nas rotas, além de colocarmos em Providers em forma de objeto o provider: LocationStrategy e o UseClass: HashLocationStrategy.
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy

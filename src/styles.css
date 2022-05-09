@@ -1,6 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
 /*Utilizamos o scroll-behavior: smooth para toda vez que dermos um scrool com click, ele seja de forma suave.*/
+
 html {
   scroll-behavior: smooth;
+}
+
+.fs-54 {
+  font-size: 54pt;
+}
+
+.fs-18 {
+  font-size: 18pt;
 }
