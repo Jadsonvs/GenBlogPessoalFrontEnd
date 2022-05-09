@@ -1,1 +1,6 @@
-<router-outlet></router-outlet>
+<app-menu *ngIf="authService.logado()"></app-menu> <!-- Utilizamos um atributo com a condicional ngIf com a propriedade authService(instanciada/injetada em app.component.ts) que contem o método logado()(que já foi criado no component service no arquivo auth.service.ts) que já retornará true ou false.-->
+<!--COM ISSO O MEU MENU SÓ IRÁ APARECER QUANDO A PÁGINA ESTIVER LOGADA-->
+
+<router-outlet></router-outlet> <!--Irá amostrar apenas as rotas que estão referênciadas no app-routing.module.ts-->
+
+<app-rodape *ngIf="authService.logado()"></app-rodape> <!-- UTILIZANDO  A CONDICIONAL ngIf  O RODAPE SÓ IRÁ APARECER QUANDO A PÁGINA ESTIVER LOGADA-->

@@ -7,10 +7,12 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto d-flex align-items-center">
       <li class="nav-item active">
-        <img src="https://github.com/Jadsonvs.png" alt="" width="50vw" height="50vh" class="img-fluid rounded-circle">
+        <!--Para utilizar o valor(vindo de environment.foto) da variável nome criada em menu.component.ts devemos utilizar o conceito de interpolação de variável,  usando {{nome da variável}}. Interpolamos a variável foto que contém o link da foto gravado em banco de dado-->
+        <img src="{{foto}}" alt="" width="50vw" height="50vh" class="img-fluid rounded-circle">
       </li>
       <li class="nav-item pl-3">
-       <p class="m-0 font-weight-bold text-white fs">Nome do usuário</p>
+        <!--Seguimos o mesmo principio de interpolação para o nome do usuário-->
+       <p class="m-0 font-weight-bold text-white fs">Olá, {{nome}}</p>
       </li>
       <a href="">
         <li class="nav-item pl-3">
@@ -21,7 +23,8 @@
 
     <ul class="navbar-nav ml-auto d-flex align-items-center">
       <li class="nav-item pl-3">
-        <a class="m-0 font-weight-bold text-white fs">Sair <i class="fa fa-sign-out" aria-hidden="true"></i></a>
+        <!--Criado um evento de click dentro da tag <a> para usarmos o método sair que desloga o usuário e o direciona para página de login-->
+        <a (click)="sair()" class="m-0 font-weight-bold text-white fs">Sair <i class="fa fa-sign-out" aria-hidden="true"></i></a>
       </li>
     </ul>
   </div>

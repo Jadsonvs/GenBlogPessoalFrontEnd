@@ -10,3 +10,5 @@ export const environment = { // Temos um objeto export, uma constante(const) e u
 //Devemos pegar sempre o enviromnment.prod.ts por que sempre que estivermos trabalhando cem produção no heroko, o angular irá pegar esse arquivo e ignorar o arquivo environment.ts
 //Environment são objetos que nos ajuda a trabalhar com variaveis global além de outra funções.
 //Environments são variáveis globais, acessívels a todos os componentes.
+
+//Toda vez que logamos os valores de token, nome, id e foto são passadas para o nosso environment dentro de suas variáveis.

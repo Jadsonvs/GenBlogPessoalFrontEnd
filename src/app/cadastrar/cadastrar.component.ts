@@ -16,7 +16,7 @@ export class CadastrarComponent implements OnInit {
   confirmarSenhar: string //Variável criada para armazenar o valor pego pelo evento input em senha
   tipoUser: string
 
-  constructor(
+  constructor( //Constructor no Angular serve para fazer a injeção/instanciar das dependências/Objeto
     private authService: AuthService, //Criamos o objeto authService dentro do constructor para referenciamos o AuthService(será injetado a dependência dentro do documento) para que possamos cadastrar o usuário caso as senhas sejam iguais
     private router: Router // variável com dependencia Router para redirecionar para uma página
   ) { }
