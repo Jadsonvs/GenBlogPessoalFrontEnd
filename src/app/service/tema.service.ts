@@ -27,9 +27,23 @@ export class TemaService {
     return this.http.get<Tema[]>('https://springblogpessoal.herokuapp.com/tema', this.token)
   }
 
+  //O método getByIdTema vamos passar um de ID para o banco de dados e ter como resposta(Observable) um único tema do db. Lembrando de usar que essa rota busca um parâmetro do nosso backend e devemos usar /${parâmetro}
+  getByIdTema(id: number): Observable<Tema> {
+    return this.http.get<Tema>(`https://springblogpessoal.herokuapp.com/tema/${id}`, this.token)
+  }
+
   //Método POST para criar uma requisição do tipo Tema e inclur dentro do banco de dados. Esse método post irá criar uma requisição do tipo Tema, que irá criar um tema por vez(por isso não passamos o array[]). Para acessar nosso endpoint https://springblogpessoal.herokuapp.com/tema passamos nosso Objeto token.
   postTema(tema: Tema): Observable<Tema> {
     return this.http.post<Tema>('https://springblogpessoal.herokuapp.com/tema',tema, this.token)
+  }
+
+  putTema(tema: Tema): Observable<Tema> {
+    return this.http.put<Tema>('https://springblogpessoal.herokuapp.com/tema', tema, this.token)
+  }
+
+  //Para o método delete vou precisar passar apenas um id para o backend. Não vou precisar de um Observable por não está passando um Objeto e nem precisar de um, vou precisar apenas do id do Objeto, já que no backend ele faz todo o trabalho.
+  deleteTema(id: number) {
+    return this.http.delete(`https://springblogpessoal.herokuapp.com/tema/${id}`, this.token)//Para receber o parâmetro id do backend no Angular, precisamos por entre crases ao invés de aspas simples o nosso endpoint mais / mais $ mais {} e dentro das chaves o parâmetro que estamos pedindo, no caso o id. Aqui passamos o parâmetro pela rota ou invés do Objeto.
   }
 
 }

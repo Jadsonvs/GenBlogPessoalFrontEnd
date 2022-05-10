@@ -50,12 +50,12 @@
         </thead>
         <tbody>
           <!--Criando um lista automático com o laço de repetição-->
-          <tr *ngFor="let tema of listaTemas"><!--*ngFor criado em tr para criar as linhas com nossos temas cadastrados automáticamente na tabela de tema. Estrutura let implementador(pode ser qualquer nome) of variável(no caso listaTemas criado em tema.component.ts)-->
-            <th>{{tema.id}}</th>
-            <td>{{tema.descricao}}</td>
+          <tr *ngFor="let item of listaTemas"><!--*ngFor criado em tr para criar as linhas com nossos temas cadastrados automáticamente na tabela de tema. Estrutura let implementador(pode ser qualquer nome) of variável(no caso listaTemas criado em tema.component.ts)-->
+            <th>{{item.id}}</th>
+            <td>{{item.descricao}}</td>
             <td class="d-flex justify-content-end">
-              <button class="btn btn-info mr-3">Editar</button>
-              <button class="btn btn-danger">Deletar</button>
+              <button class="btn btn-info mr-3" [routerLink]="['/tema-edit', item.id]">Editar</button><!--Passando um routerLink(com property Binding) diferenciado por ter o nome da rota com um valor de parâmetro valor de parâmetro. O parâmetro item.id está na linha 54 do nosso *ngFor. Usar aspas duplas e dentro as aspas simples obrigatoriamente-->
+              <button class="btn btn-danger" [routerLink]="['/tema-delete', item.id]">Deletar</button>
             </td>
           </tr>
         </tbody>
