@@ -7,5 +7,5 @@ export class Usuario{ //Como criar uma class no TS
   public senha: string
   public foto: string
   public tipo: string
-  public postagens: Postagem[] //Como são várias postagems em Usuario, devo por um arrays [] de postagens. Seguindo a regra do ManyToOne(muitas postagens para um usuário) ou OneToMany(uma usuário para muitas postagens)
+  public postagens: Postagem[] //Como são várias postagens em Usuario, devo por um arrays [] de postagens. Seguindo a regra do ManyToOne(muitas postagens para um usuário) ou OneToMany(uma usuário para muitas postagens)
 }
