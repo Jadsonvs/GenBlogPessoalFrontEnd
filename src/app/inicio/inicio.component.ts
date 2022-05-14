@@ -34,6 +34,8 @@ export class InicioComponent implements OnInit {
 
   ngOnInit() {
 
+    window.scroll(0,0)
+
     //Será verificado se o token está vazio, caso esteja irá aparecer um alert para o usuário e ele será direcionado para a tela de login
     if(environment.token == '') {
       //alert('Sua secção expirou,faça login novamente')
@@ -72,6 +74,7 @@ export class InicioComponent implements OnInit {
 
 
   publicar() {
+    this.tema.id = this.idTema
     this.postagem.tema = this.tema
 
     this.usuario.id = this.idUsuario
