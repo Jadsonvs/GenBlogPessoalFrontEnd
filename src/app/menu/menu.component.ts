@@ -13,6 +13,7 @@ export class MenuComponent implements OnInit {
   //Para usar a valor dessas variáveis nome e foto, iremos interpolar seus valores no HTML
   nome = environment.nome
   foto = environment.foto
+  id = environment.id
 
   constructor(
     private router: Router //Injetado o Router no arquivo para direcionarmos o usuário para alguma rota, no caso a rota entrar no método sair.
