@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Tema } from 'src/app/model/Tema';
+import { AlertasService } from 'src/app/service/alertas.service';
 import { TemaService } from 'src/app/service/tema.service';
 import { environment } from 'src/environments/environment.prod';
 
@@ -17,14 +18,15 @@ export class TemaEditComponent implements OnInit {
   constructor(
     private temaService: TemaService,
     private router: Router,
-    private route: ActivatedRoute//Dependencia que irá pegar a rota que está ativa no momento na página
+    private route: ActivatedRoute,//Dependencia que irá pegar a rota que está ativa no momento na página
+    private alertas: AlertasService,
   ) { }
 
   ngOnInit(): void {
 
     //Será verificado se o token está vazio, caso esteja irá aparecer um alert para o usuário e ele será direcionado para a tela de login
     if(environment.token == '') {
-      //alert('Sua secção expirou,faça login novamente')
+      this.alertas.showAlertInfo('Sua secção expirou,faça login novamente')
       this.router.navigate(['/entrar']) // Utilizando o router da dependencia Router(injetada no arquivo) com o navigate para direcionar o usuário para tela de login.
     }
 
@@ -41,7 +43,7 @@ export class TemaEditComponent implements OnInit {
   atualizar() {
     return this.temaService.putTema(this.tema). subscribe((resp: Tema) => {
       this.tema = resp
-      alert('Tema atualizado com sucesso!')
+      this.alertas.showAlertSuccess('Tema atualizado com sucesso!')
       this.router.navigate(['/tema'])
     })
   }

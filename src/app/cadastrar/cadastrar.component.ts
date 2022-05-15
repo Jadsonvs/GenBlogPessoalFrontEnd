@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuario } from '../model/Usuario';
+import { AlertasService } from '../service/alertas.service';
 import { AuthService } from '../service/auth.service';
 
 @Component({
@@ -18,7 +19,8 @@ export class CadastrarComponent implements OnInit {
 
   constructor( //Constructor no Angular serve para fazer a injeção/instanciar das dependências/Objeto
     private authService: AuthService, //Criamos o objeto authService dentro do constructor para referenciamos o AuthService(será injetado a dependência dentro do documento) para que possamos cadastrar o usuário caso as senhas sejam iguais
-    private router: Router // variável com dependencia Router para redirecionar para uma página
+    private router: Router, // variável com dependencia Router para redirecionar para uma página
+    private alertas: AlertasService,
   ) { }
 
   // Apagaremos o: void do ngonInit.
@@ -42,13 +44,13 @@ export class CadastrarComponent implements OnInit {
     console.log(this.usuario)
 
     if(this.usuario.senha != this.confirmarSenhar) { //if para validação de senhas
-      alert('As senhas estão incorretas')
+      this.alertas.showAlertdanger('As senhas estão incorretas')
 
     } else {
       this.authService.cadastrar(this.usuario).subscribe((resp: Usuario) => {
         this.usuario = resp //usuario será igual a resp do subscribe
         this.router.navigate(['/entrar'])
-        alert('Usuário cadastrado com sucesso!')
+        this.alertas.showAlertSuccess('Usuário cadastrado com sucesso!')
       })//chamamos o objeto authSerive e o método cadastrar passando o objeto usuario. Utilizamos o "subscribe" para enviar ao servido o objeto usuario como JSON e não como TypeScript, ou seja o subscribe sobescreve o obejto TypeScript em JSON. Utilizamos um ero function entre parentese ( () => {} ) que irá me responder(resp é uma variável) um Usuario
     }
 

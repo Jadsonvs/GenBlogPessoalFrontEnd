@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { Tema } from '../model/Tema';
+import { AlertasService } from '../service/alertas.service';
 import { TemaService } from '../service/tema.service';
 
 @Component({
@@ -19,13 +20,14 @@ export class TemaComponent implements OnInit {
 
   constructor(
     private router: Router, //Injeção da dependencia/Objeto Router para que possamos utilizá-la no this.router.navigate([]) do IF abaixo para direcionar o usuário para tela de login, caso ele atualize a página e seja deslogado
-    private temaService: TemaService //importar a dependencia TemaService e nomear a variável com temaService
+    private temaService: TemaService, //importar a dependencia TemaService e nomear a variável com temaService
+    private alertas: AlertasService,
   ) { }
 
   ngOnInit(): void {
     //Será verificado se o token está vazio, caso esteja irá aparecer um alert para o usuário e ele será direcionado para a tela de login
     if(environment.token == '') {
-      //alert('Sua secção expirou,faça login novamente')
+      this.alertas.showAlertInfo('Sua secção expirou,faça login novamente')
       this.router.navigate(['/entrar']) // Utilizando o router da dependencia Router(injetada no arquivo) com o navigate para direcionar o usuário para tela de login.
     }
 
@@ -44,7 +46,7 @@ export class TemaComponent implements OnInit {
   cadastrar() {
     this.temaService.postTema(this.tema).subscribe((resp: Tema)=>{
       this.tema = resp
-      alert('Tema cadastrado com sucesso')
+      this.alertas.showAlertSuccess('Tema cadastrado com sucesso')
       this.findAllTemas()//Chamando o método findAllTemas() Irá trazer minha lista atualizada assim que eu cadastrar um novo tema na minha tabela
       this.tema = new Tema()//Instanciando novamente o Objeto tema para que quando criarmos um tema, o input do tema fique vazio novamente.
     })

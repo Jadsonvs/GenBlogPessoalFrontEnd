@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from 'src/app/model/Usuario';
+import { AlertasService } from 'src/app/service/alertas.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { environment } from 'src/environments/environment.prod';
 
@@ -19,7 +20,8 @@ export class UsuarioEditComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private route: ActivatedRoute //Para pegar um parametro(aqui no caso um ID) em uma rota ativa.
+    private route: ActivatedRoute, //Para pegar um parametro(aqui no caso um ID) em uma rota ativa.
+    private alertas: AlertasService,
   ) { }
 
   ngOnInit(){
@@ -27,7 +29,7 @@ export class UsuarioEditComponent implements OnInit {
 
    //Será verificado se o token está vazio, caso esteja irá aparecer um alert para o usuário e ele será direcionado para a tela de login
    if(environment.token == '') {
-    //alert('Sua secção expirou,faça login novamente')
+    this.alertas.showAlertInfo('Sua secção expirou,faça login novamente')
     this.router.navigate(['/entrar']) // Utilizando o router da dependencia Router(injetada no arquivo) com o navigate para direcionar o usuário para tela de login.
   }
 
@@ -50,14 +52,14 @@ export class UsuarioEditComponent implements OnInit {
     this.usuario.tipo = this.tipoUser //  A variável "tipo" dentro do objetvo usuario irá receber o valor da variável "tipoUser", que contém o valor que foi selecionado na <tag> select do html.
 
     if(this.usuario.senha != this.confirmarSenhar) { //if para validação de senhas
-      alert('As senhas estão incorretas')
+      this.alertas.showAlertdanger('As senhas estão incorretas')
 
     } else {
       this.authService.atualizar(this.usuario).subscribe((resp: Usuario) => {
         this.usuario = resp //usuario será igual a resp do subscribe
         this.router.navigate(['/inicio'])
-        alert('Usuário atualizado com sucesso, faça o login novamente.')
-        
+        this.alertas.showAlertSuccess('Usuário atualizado com sucesso, faça o login novamente.')
+
         //Zerando os environment com os valores de parâmetros necessários para se manter logado, assim deslogamos nosso usuário e mandamos  ele para a tela de login para que ele faça o login novamente e suas informações atualizadas seja vista por ele.
         environment.token = ''
         environment.nome = ''
