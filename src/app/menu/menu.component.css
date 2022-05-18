@@ -1,0 +1,12 @@
+.fs {
+  font-size: 16pt;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.hov:hover {
+  color: blue;
+}

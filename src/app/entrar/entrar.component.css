@@ -1,0 +1,10 @@
+#img-bg {
+  background-image: url('https://imgur.com/F6VjoZl.gif');
+
+  min-height: 100vh;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
