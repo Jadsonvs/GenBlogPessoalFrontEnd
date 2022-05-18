@@ -18,10 +18,12 @@ export class InicioComponent implements OnInit {
 
   postagem: Postagem = new Postagem()
   listaPostagens: Postagem[]
+  tituloPost: string
 
   tema: Tema = new Tema()
   idTema: number
   listaTemas: Tema[]
+  nomeTema: string
 
   usuario: Usuario = new Usuario()
   idUsuario = environment.id
@@ -93,6 +95,28 @@ export class InicioComponent implements OnInit {
       this.getAllPostagens()
     })
 
+  }
+
+  //método para pesquisa por titulo postagem.
+  findBytituloPostagem() {
+    if (this.tituloPost == '') { //Se titulo vazio, pegar todas as postagem, caso contrario usar o método de pesquisa.
+      this.getAllPostagens()
+    } else {
+      this.postagemService.getByTituloPostagem(this.tituloPost). subscribe((resp: Postagem[]) => {
+        this.listaPostagens = resp
+      })
+    }
+  }
+
+  //método para pesquisa por tema.
+  findByNomeTema() {
+    if (this.nomeTema == '') {
+      this.getAllTemas()
+    } else {
+      this.temaService.getByNomeTema(this.nomeTema). subscribe((resp: Tema[]) => {
+        this.listaTemas = resp
+      })
+    }
   }
 
 }
