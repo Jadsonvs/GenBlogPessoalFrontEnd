@@ -3,7 +3,7 @@ export const environment = { // Temos um objeto export, uma constante(const) e u
   token: '', //string apenas colocamos as '' aspas simples.
   nome: '',
   id: 0, //id é um número e colocamos o zero no lugar de aspas simples.
-  foto: ''
+  foto: '',
 
 };
 

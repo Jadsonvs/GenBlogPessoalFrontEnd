@@ -10,7 +10,7 @@ export class AlertasComponent implements OnInit {
 
   //Para importar um variável que está em outro componente da aplicação basta utilizar a notação que é um método @input() e passar a variável e seu tipo.
   @Input() message: string //Utilizamos dois pontos ":" para dizer qual o tipo da variável
-  @Input() tipo: string = 'success' //Utilizamos o sinal de igual "=" para dizer que a variável já irá receber um valor.
+  @Input() type: string = 'success' //Utilizamos o sinal de igual "=" para dizer que a variável já irá receber um valor.
 
 
   constructor(

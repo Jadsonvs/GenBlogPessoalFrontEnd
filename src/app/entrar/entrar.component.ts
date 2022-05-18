@@ -20,7 +20,7 @@ export class EntrarComponent implements OnInit {
     private alertas: AlertasService
   ) { }
 
-  ngOnInit(): void{
+  ngOnInit() {
     window.scroll(0,0)
   }
 
@@ -28,12 +28,11 @@ export class EntrarComponent implements OnInit {
     this.auth.entrar(this.usuarioLogin).subscribe({
       next: (resp: UsuarioLogin)=> {
       this.usuarioLogin = resp
-      this.alertas.showAlertSuccess('Usuário logado com sucesso!')
 
-      environment.token = this.usuarioLogin.token //para utilizarmos variaveis global no Angular devemos introduzi-las dentro do environment.prod.ts e chama-las como envinroment.(atributo) = this.(variável).atributo. Environment são objetos que nos ajuda a trabalhar com variaveis global além de outra funções. Environments são variáveis globais, acessívels a todos os componentes.
-      environment.nome = this.usuarioLogin.nome
-      environment.id = this.usuarioLogin.id
-      environment.foto = this.usuarioLogin.foto
+      environment.id = this.usuarioLogin.id //para utilizarmos variaveis global no Angular devemos introduzi-las dentro do environment.prod.ts e chama-las como envinroment.(atributo) = this.(variável).atributo. Environment são objetos que nos ajuda a trabalhar com variaveis global além de outra funções. Environments são variáveis globais, acessívels a todos os componentes.
+      environment.nome = this.usuarioLogin.nome;
+      environment.foto = this.usuarioLogin.foto;
+      environment.token = this.usuarioLogin.token;
 
       this.router.navigate(['/inicio'])
     },

@@ -26,6 +26,10 @@ export class InicioComponent implements OnInit {
   usuario: Usuario = new Usuario()
   idUsuario = environment.id
 
+  //Criação de variáveis para ordenação das postagens. Criado a variável key que vai receber o valor data para ordenação por ordem de data de postagem, e a variável reverse que vai receber o valor true, que exibirá a última postagem para a primeira em ordem de data.
+  key = 'data'
+  reverse = true
+
   constructor(
     private router: Router, //Injeção da dependencia/Objeto Router para que possamos utilizá-la no this.router.navigate([]) do IF abaixo para direcionar o usuário para tela de login, caso ele atualize a página e seja deslogado
     private postagemService: PostagemService,
@@ -81,8 +85,6 @@ export class InicioComponent implements OnInit {
 
     this.usuario.id = this.idUsuario
     this.postagem.usuario = this.usuario
-
-    console.log(this.postagem)
 
     this.postagemService.postPostagem(this.postagem). subscribe((resp: Postagem) => {
       this.postagem = resp

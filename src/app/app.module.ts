@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms'; //import do modulo que pegará tud
 import { AppRoutingModule } from './app-routing.module';
 import { HashLocationStrategy, LocationStrategy} from '@angular/common'; //Para usar o hfre do ancora e ele funcionar de forma interna na rotas, devemos configurar em app.module.ts e colocar dois provide de localização . Então para gente sempre referenciar as rotas e o Angular não se perder, devemos importar os modules HashLocationStrategy e o LocationStrategy no app.module.ts parao Angular nunca se perder nas rotas, além de colocarmos em Providers em forma de objeto o provider: LocationStrategy e o UseClass: HashLocationStrategy.
 import { ModalModule } from 'ngx-bootstrap/modal'; //ModalModule importado para que o alertas.service.ts funcione corretamente
+import { OrderModule } from 'ngx-order-pipe';//Importe do OrderModule para ordeção
 
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
@@ -44,6 +45,7 @@ import { AlertasComponent } from './alertas/alertas.component';
     HttpClientModule, //Importe de module para funcionamento da service. Para conseguirmos realizar as requisições Http.
     FormsModule, //Importe do modulo. modulo que irá pegar tudo que está no input do html.
     ModalModule.forRoot(),//Importe do Modalmodule para funcionamento do Alertas.service.ts funcione corretamente. Devemos passar o método .forRoot() para que o ModalModule seja acessado em toda raiz do projeto e para que o @Input() funcione corretamente.
+    OrderModule,//Importe do OrderModule para ordenação das postagens.
   ],
 
   //Para usar o hfre do ancora na tela atual e ele funcionar de forma interna na rotas, devemos configurar em app.module.ts e colocar dois provide de localização . Então para gente sempre referenciar as rotas e o Angular não se perder, devemos importar os modules HashLocationStrategy e o LocationStrategy no app.module.ts parao Angular nunca se perder nas rotas, além de colocarmos em Providers em forma de objeto o provider: LocationStrategy e o UseClass: HashLocationStrategy.

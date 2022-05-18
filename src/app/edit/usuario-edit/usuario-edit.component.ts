@@ -48,8 +48,8 @@ export class UsuarioEditComponent implements OnInit {
     this.tipoUser = event.target.value
   }
 
-  atualizar() {
-    this.usuario.tipo = this.tipoUser //  A variável "tipo" dentro do objetvo usuario irá receber o valor da variável "tipoUser", que contém o valor que foi selecionado na <tag> select do html.
+   atualizar() {
+     this.usuario.tipo = this.tipoUser //  A variável "tipo" dentro do objetvo usuario irá receber o valor da variável "tipoUser", que contém o valor que foi selecionado na <tag> select do html.
 
     if(this.usuario.senha != this.confirmarSenhar) { //if para validação de senhas
       this.alertas.showAlertdanger('As senhas estão incorretas')
@@ -76,6 +76,7 @@ export class UsuarioEditComponent implements OnInit {
   getByIdUsuario(id: number) {
     this.authService.getByIdUsuario(id).subscribe((resp: Usuario) => {
       this.usuario = resp
+      this.usuario.senha = '' //Deixamos a senha do usuáario como vazia para que não apareça o token codificado no momento de editar o usuário
     })
   }
 

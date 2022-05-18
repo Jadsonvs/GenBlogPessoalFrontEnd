@@ -34,7 +34,7 @@ export class TemaService {
 
   //Método POST para criar uma requisição do tipo Tema e inclur dentro do banco de dados. Esse método post irá criar uma requisição do tipo Tema, que irá criar um tema por vez(por isso não passamos o array[]). Para acessar nosso endpoint https://springblogpessoal.herokuapp.com/tema passamos nosso Objeto token.
   postTema(tema: Tema): Observable<Tema> {
-    return this.http.post<Tema>('https://springblogpessoal.herokuapp.com/tema',tema, this.token)
+    return this.http.post<Tema>('https://springblogpessoal.herokuapp.com/tema', tema, this.token)
   }
 
   putTema(tema: Tema): Observable<Tema> {

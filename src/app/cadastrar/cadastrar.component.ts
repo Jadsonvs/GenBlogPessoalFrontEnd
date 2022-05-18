@@ -41,7 +41,6 @@ export class CadastrarComponent implements OnInit {
 
   cadastrar() { //
     this.usuario.tipo = this.tipoUser //  A variável "tipo" dentro do objetvo usuario irá receber o valor da variável "tipoUser", que contém o valor que foi selecionado na <tag> select do html.
-    console.log(this.usuario)
 
     if(this.usuario.senha != this.confirmarSenhar) { //if para validação de senhas
       this.alertas.showAlertdanger('As senhas estão incorretas')
