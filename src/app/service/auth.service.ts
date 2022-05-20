@@ -52,6 +52,18 @@ export class AuthService {
     return ok // retorno um ok false se environment.token for vazio ou retorno um ok true se environment.token não for vazio.
 
   }
+
+  //Método adm para saber se o usuário é administrador da página e poder sumir com elementos, caso não seja adm
+  adm() {
+    let ok: boolean = false
+
+    if(environment.tipo == 'adm') {
+      ok = true
+    }
+
+    return ok
+  }
+
 }
 
 

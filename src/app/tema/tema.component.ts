@@ -27,8 +27,14 @@ export class TemaComponent implements OnInit {
   ngOnInit(): void {
     //Será verificado se o token está vazio, caso esteja irá aparecer um alert para o usuário e ele será direcionado para a tela de login
     if(environment.token == '') {
-      this.alertas.showAlertInfo('Sua secção expirou,faça login novamente')
+      this.alertas.showAlertInfo('Sua secção expirou, faça login novamente')
       this.router.navigate(['/entrar']) // Utilizando o router da dependencia Router(injetada no arquivo) com o navigate para direcionar o usuário para tela de login.
+    }
+
+    //If para bloquear/sumir o componente cadastrar tema caso o usuário não seja adm.
+    if (environment.tipo != 'adm') {
+      this.alertas.showAlertInfo('Você precisa ser administrador para acessar essa rota')
+      this.router.navigate(['/inicio'])
     }
 
     this.findAllTemas()//Chamando o método findAlltemas  em ngOnInit() irá listar todos os temas automáticamente sempre que acessarmos a página tema.

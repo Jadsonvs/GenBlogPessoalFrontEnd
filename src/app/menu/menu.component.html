@@ -14,11 +14,13 @@
         <!--Seguimos o mesmo principio de interpolação para o nome do usuário-->
        <p class="m-0 font-weight-bold text-white fs">Olá, {{nome}}</p>
       </li>
-      <a [routerLink]="['/usuario-edit', id]">
+
         <li class="nav-item pl-3">
+          <a [routerLink]="['/usuario-edit', id]">
           <p class="m-0 text-white fs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></p>
+         </a>
          </li>
-      </a>
+
     </ul>
 
     <ul class="navbar-nav ml-auto d-flex align-items-center">
