@@ -38,6 +38,10 @@ export class AuthService {
     return this.http.put<Usuario>('https://springblogpessoal.herokuapp.com/usuarios/atualizar', usuario, this.token)
   }
 
+  deletar(id: number) {
+    return this.http.delete(`https://springblogpessoal.herokuapp.com/usuarios/${id}`, this.token)
+  }
+
   getByIdUsuario(id: number): Observable<Usuario> {
     return this.http.get<Usuario>(`https://springblogpessoal.herokuapp.com/usuarios/${id}`, this.token)
   }
