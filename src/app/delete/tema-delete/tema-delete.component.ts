@@ -26,7 +26,7 @@ export class TemaDeleteComponent implements OnInit {
 
     //Será verificado se o token está vazio, caso esteja irá aparecer um alert para o usuário e ele será direcionado para a tela de login
     if(environment.token == '') {
-      //alert('Sua secção expirou,faça login novamente')
+      alert('Sua secção expirou,faça login novamente')
       this.router.navigate(['/entrar']) // Utilizando o router da dependencia Router(injetada no arquivo) com o navigate para direcionar o usuário para tela de login.
     }
 

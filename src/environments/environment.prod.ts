@@ -4,6 +4,7 @@ export const environment = { // Temos um objeto export, uma constante(const) e u
   nome: '',
   id: 0, //id é um número e colocamos o zero no lugar de aspas simples.
   foto: '',
+  tipo: '', //Variável que definirá se usuário adm ou normal
 
 };
 

@@ -48,9 +48,10 @@
       </div>
 
       <div class="d-flex justify-content-center">
-        <button type="submit" class="btn btn-danger mr-4" routerLink="/inicio"> Cancelar</button>
+        <button type="submit" class="btn btn-warning mr-4" routerLink="/inicio"> Cancelar</button>
         <!--Método cadastrar será chamado no html no botão cadastrar através do evento de (click) e realizo o cadastro do usuário-->
-        <button type="submit" class="btn btn-success" (click)="atualizar()">Atualizar</button>
+        <button type="submit" class="btn btn-success mr-4" (click)="atualizar()">Atualizar</button>
+        <button type="submit" class="btn btn-danger" [routerLink]="['/usuario-delete', usuario.id]">Deletar</button>
       </div>
 
       </div>
