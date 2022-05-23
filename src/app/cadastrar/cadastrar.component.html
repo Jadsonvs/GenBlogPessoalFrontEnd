@@ -14,29 +14,29 @@
             <div class="form-group">
               <label for="nome">Nome</label>
                <!--Utilizamos o [(ngModel)]='usuarioLogin.nome' para ficar escutando tudo que é escrito dentro do input-->
-              <input [(ngModel)]="usuario.nome" class="form-control"  type="text" name="nome" id="nome" placeholder="Seu nome">
+              <input [(ngModel)]="usuario.nome" (keyup)="validaNome()" class="form-control"  type="text" name="nome" id="nome" placeholder="Seu nome">
             </div>
 
             <div class="form-group">
-              <label for="email">usuário</label>
-              <input [(ngModel)]="usuario.usuario" class="form-control"  type="email" name="email" id="email" placeholder="Seu e-mail">
+              <label for="usuario">usuário</label>
+              <input [(ngModel)]="usuario.usuario" (keyup)="validaEmail()" class="form-control"  type="email" name="email" id="usuario" placeholder="Seu e-mail">
             </div>
 
             <div class="form-group">
               <label for="foto">Link da foto</label>
-              <input [(ngModel)]="usuario.foto" class="form-control"  type="text" name="foto" id="foto" placeholder="Link da sua foto">
+              <input [(ngModel)]="usuario.foto" class="form-control"  type="text" name="foto" id="foto" placeholder="Link da sua foto(opcional)">
             </div>
 
             <div class="form-group">
               <label for="senha">Senha</label>
             <!--Antes de por a senha dentro do objeto usuarioLogin, eu vou confirmar primeiro, para isso eu vou criar um método e um evento antes, como abaixo em senha-->
             <!--O evento é criado dentro de parenteses () e sem a palavra ON e o evento chama um método(método=função) e não mais uma função(JavaScript). Esse método espera um evento e esse evento é passado com sifrão($) e o nome do evento javascript-->
-              <input (input)="confirmSenha($event)" class="form-control"  type="password" name="senha" id="senha" placeholder="Sua senha">
+              <input (input)="confirmSenha($event)" class="form-control"  type="password" name="senha" id="senha" placeholder="mínimo 8 caracteres">
             </div>
 
             <div class="form-group">
               <label for="confirmSenha">Confirmar senha</label>
-              <input [(ngModel)]="usuario.senha" class="form-control"  type="password" name="confirmSenha" id="confirmSenha" placeholder="Confirme sua senha">
+              <input [(ngModel)]="usuario.senha" class="form-control"  type="password" name="confirmSenha" id="confirmSenha"  placeholder="Confirme sua senha">
             </div>
 
             <div class="form-group">

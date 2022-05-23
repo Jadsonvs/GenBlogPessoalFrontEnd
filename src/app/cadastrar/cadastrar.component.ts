@@ -39,20 +39,51 @@ export class CadastrarComponent implements OnInit {
     this.tipoUser = event.target.value
   }
 
-  cadastrar() { //
-    this.usuario.tipo = this.tipoUser //  A variável "tipo" dentro do objetvo usuario irá receber o valor da variável "tipoUser", que contém o valor que foi selecionado na <tag> select do html.
-
-    if(this.usuario.senha != this.confirmarSenhar) { //if para validação de senhas
-      this.alertas.showAlertdanger('As senhas estão incorretas')
-
+  cadastrar() {
+    this.usuario.tipo = this.tipoUser
+    if (this.usuario.senha != this.confirmarSenhar) {
+      this.alertas.showAlertdanger('As senhas estão incorretas.')
     } else {
-      this.authService.cadastrar(this.usuario).subscribe((resp: Usuario) => {
-        this.usuario = resp //usuario será igual a resp do subscribe
-        this.router.navigate(['/entrar'])
+      this.authService.cadastrar(this.usuario).subscribe({
+        next: (resp: Usuario) =>{
+        this.usuario = resp
         this.alertas.showAlertSuccess('Usuário cadastrado com sucesso!')
-      })//chamamos o objeto authSerive e o método cadastrar passando o objeto usuario. Utilizamos o "subscribe" para enviar ao servido o objeto usuario como JSON e não como TypeScript, ou seja o subscribe sobescreve o obejto TypeScript em JSON. Utilizamos um ero function entre parentese ( () => {} ) que irá me responder(resp é uma variável) um Usuario
+        this.router.navigate(['/entrar']);
+        },
+        error: (erro) => {
+          if(erro.status == 400) {
+            this.alertas.showAlertdanger('Preencha todos os campos corretamente para cadastrar um usuario!')
+          }}
+        })
+     }
+  }
+
+  validaNome(){
+    if(this.usuario.nome.length < 3){
+      let usuario = (<HTMLDivElement>document.querySelector('#nome'))
+      usuario.style.borderColor = 'red';
+      usuario.style.boxShadow = '0 0 1em red';
+    }else{
+      let usuario = (<HTMLDivElement>document.querySelector('#nome'))
+      usuario.style.borderColor = 'green';
+      usuario.style.boxShadow = '0 0 1em green';
+
     }
 
+}
+
+  validaEmail() {
+    let regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+    if(this.usuario.usuario.match(regex)) {
+      let usuario = (<HTMLDivElement>document.querySelector('#usuario'))
+      usuario.style.borderColor = 'green';
+      usuario.style.boxShadow = '0 0 1em green';
+    } else {
+      let usuario = (<HTMLDivElement>document.querySelector('#usuario'))
+      usuario.style.borderColor = 'red';
+      usuario.style.boxShadow = '0 0 1em red';
+    }
   }
+
 
 }
