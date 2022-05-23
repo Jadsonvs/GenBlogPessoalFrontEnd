@@ -36,7 +36,7 @@ export class InicioComponent implements OnInit {
     private router: Router, //Injeção da dependencia/Objeto Router para que possamos utilizá-la no this.router.navigate([]) do IF abaixo para direcionar o usuário para tela de login, caso ele atualize a página e seja deslogado
     private postagemService: PostagemService,
     private temaService: TemaService,
-    private authService: AuthService,
+    public authService: AuthService, //Sempre que usar o método adm() que está em authService, lembrar de deixar como public a variável que contem o Objeto AuthService para conseguir usar dentro do html.
     private alertas: AlertasService
   ) { }
 
